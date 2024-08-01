@@ -347,3 +347,8 @@ boolean NewRemoteReceiver::isReceiving(int waitMillis) {
 
 	return false;
 }
+
+short NewRemoteReceiver::getState()
+{
+	return _state;
+}

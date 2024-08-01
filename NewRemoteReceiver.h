@@ -113,6 +113,14 @@ class NewRemoteReceiver {
 		static boolean isReceiving(int waitMillis = 150);
 
 		/**
+		* Returns the current _state, which describes the current bit number
+		* the decoding algorithm is at. In other words, the number of interrupts received after it believes
+		* a previous code has finished (a Stopbit was received).
+		* @return short
+		*/
+		static short getState();
+
+		/**
 		 * Called every time the signal level changes (high to low or vice versa). Usually called by interrupt.
 		 */
 		static void interruptHandler();
