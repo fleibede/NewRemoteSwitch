@@ -146,7 +146,7 @@ void RECEIVE_ATTR NewRemoteReceiver::interruptHandler() {
 			// Sync signal received.. Preparing for decoding
 			repeats = 0;
 
-			receivedCode.period = duration / 40; // Measured signal is 40T, so 1T (period) is measured signal / 40.
+			receivedCode.period = duration / 47; // Measured signal is 47T, so 1T (period) is measured signal / 47.
 
 			// Allow for large error-margin. ElCheapo-hardware :(
 			min1Period = receivedCode.period * 3 / 10; // Lower limit for 1 period is 0.3 times measured period; high signals can "linger" a bit sometimes, making low signals quite short.
@@ -182,7 +182,7 @@ void RECEIVE_ATTR NewRemoteReceiver::interruptHandler() {
 			receivedBit |= B1; // Set LSB of receivedBit
 		} else if (
 			// Check if duration matches the second part of stopbit (duration must be ~40T), and ...
-			(duration >= 20 * receivedCode.period && duration <= 80 * receivedCode.period) &&
+			(duration >= 23 * receivedCode.period && duration <= 94 * receivedCode.period) &&
 			// if first part op stopbit was a short signal (short signal yielded a 0 as second bit in receivedBit), and ...
 			((receivedBit & B10) == B00) &&
 			// we are in a state in which a stopbit is actually valid, only then ...
